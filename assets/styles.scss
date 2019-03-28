@@ -1,0 +1,41 @@
+@import "variables";
+
+.dots_row {
+  display: flex;
+  padding: 35px;
+
+  .dot {
+    background: $color_dark;
+    border: {
+      radius: 50%;
+    }
+    margin: {
+      right: 15px;
+    }
+    transition: all 1s;
+    width: $size;
+    height: $size;
+
+    &:first-child {
+      margin-right: -$size;
+      z-index: 1;
+
+      &:hover {
+        margin-right: 30px;
+      }
+    }
+  }
+
+  &.new {
+    filter: url("#fancy-goo");
+  }
+
+  &.old {
+    background: #fff;
+    filter: contrast(20);
+
+    .dot {
+      filter: blur(15px);
+    }
+  }
+}
