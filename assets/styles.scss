@@ -1,20 +1,24 @@
 @import "variables";
 
+%dot {
+  width: $size;
+  height: $size;
+  border: {
+    radius: 50%;
+  };
+}
+
 .dots_row {
   display: flex;
   padding: 35px;
 
   .dot {
+    @extend %dot;
     background: $color_dark;
-    border: {
-      radius: 50%;
-    }
     margin: {
       right: 15px;
     }
     transition: all 1s;
-    width: $size;
-    height: $size;
 
     &:first-child {
       margin-right: -$size;
@@ -25,17 +29,64 @@
       }
     }
   }
+}
 
-  &.new {
-    filter: url("#fancy-goo");
+.new {
+  filter: url("#fancy-goo");
+}
+
+.old {
+  background: $color_light;
+  filter: contrast(20);
+
+  .dot {
+    filter: blur(15px);
+  }
+}
+
+.paginator {
+  padding: 35px;
+  position: relative;
+
+  .selector {
+    @extend %dot;
+    background: lighten( $base-color, 15% );
+    position: absolute;
+    animation: gooey 5s alternate infinite;
   }
 
-  &.old {
-    background: #fff;
-    filter: contrast(20);
+  .item {
+    @extend %dot;
+    display: inline-block;
+    margin: {
+      right: 25px;
+    };
 
-    .dot {
-      filter: blur(15px);
+    &:last-child {
+      margin: {
+        right: 0;
+      };
     }
+
+    background: $base-color;
+  }
+}
+
+$first_move: 79px;
+@keyframes gooey {
+  0% {
+    transform: translate(0);
+  }
+  25% {
+    transform: translate($first_move);
+  }
+  50% {
+    transform: translate($first_move * 2);
+  }
+  75% {
+    transform: translate($first_move * 3);
+  }
+  100% {
+    transform: translate($first_move * 4);
   }
 }

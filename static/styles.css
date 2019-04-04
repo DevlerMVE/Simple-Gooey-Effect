@@ -1,14 +1,17 @@
+.paginator .item, .paginator .selector, .dots_row .dot {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+
 .dots_row {
   display: flex;
   padding: 35px;
 }
 .dots_row .dot {
   background: #000;
-  border-radius: 50%;
   margin-right: 15px;
   transition: all 1s;
-  width: 50px;
-  height: 50px;
 }
 .dots_row .dot:first-child {
   margin-right: -50px;
@@ -17,15 +20,53 @@
 .dots_row .dot:first-child:hover {
   margin-right: 30px;
 }
-.dots_row.new {
+
+.new {
   filter: url("#fancy-goo");
 }
-.dots_row.old {
+
+.old {
   background: #fff;
   filter: contrast(20);
 }
-.dots_row.old .dot {
+.old .dot {
   filter: blur(15px);
+}
+
+.paginator {
+  padding: 35px;
+  position: relative;
+}
+.paginator .selector {
+  background: #96bdda;
+  position: absolute;
+  animation: gooey 5s alternate infinite;
+}
+.paginator .item {
+  display: inline-block;
+  margin-right: 25px;
+  background: #5d99c6;
+}
+.paginator .item:last-child {
+  margin-right: 0;
+}
+
+@keyframes gooey {
+  0% {
+    transform: translate(0);
+  }
+  25% {
+    transform: translate(79px);
+  }
+  50% {
+    transform: translate(158px);
+  }
+  75% {
+    transform: translate(237px);
+  }
+  100% {
+    transform: translate(316px);
+  }
 }
 
 /*# sourceMappingURL=styles.css.map */
